@@ -148,9 +148,19 @@
 // Alternatively, there are helper functions, such as ggml_get_f32_1d() and ggml_set_f32_1d() that can be used.
 //
 // ## The matrix multiplication operator (ggml_mul_mat)
+// To multiply two tensors a x b, you need to pass a and the transposed b to the function.
+//  
+// {
+//         struct ggml_tensor * a = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, 4, 5)
+//         struct ggml_tensor * b = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, 4, 6)
 //
-// TODO
+//         struct ggml_tensor * c = ggmul_mul_mat(ctx, a, b)
 //
+//         assert(c->ne[0] == 5)
+//         assert(c->ne[1] == 6)
+//         ...
+// }
+//     
 //
 // ## Multi-threading
 //
